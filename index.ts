@@ -4,14 +4,32 @@ dotenv.config();
 
 const app = express();
 
-const getMain=(req: Request, res: Response, next:NextFunction) => {
+const getRoot=(req: Request, res: Response, next:NextFunction) => {
   res.send('Hello World!');
   next();
 }
-const getMainNext=(req: Request, res: Response) => {
+const getRootNext=(req: Request, res: Response) => {
   console.log('This is the next middleware');
 }
-app.get('/', getMain,getMainNext);
+
+const getComments=(req: Request, res: Response, next:NextFunction) => {
+  res.send('Hello Comments!');
+  next();
+}
+const getCommentsNext=(req: Request, res: Response) => {
+  console.log('This is the get comments next middleware');
+}
+const postComments=(req: Request, res: Response, next:NextFunction) => {
+  res.send('post comments!');
+  next();
+}
+
+const postCommentsNext=(req: Request, res: Response) => {
+  console.log('This is the post comments next middleware');
+}
+app.get('/', getRoot,getRootNext);
+app.get('/comments', getComments,getCommentsNext);
+app.post('/comments', postComments,postCommentsNext);
 
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
