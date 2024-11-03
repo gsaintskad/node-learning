@@ -18,7 +18,11 @@ const getComments = (req: Request, res: Response, next: NextFunction) => {
 };
 const getCommentsNext = (req: Request, res: Response) => {
   console.log("This is the get comments next middleware");
-  console.log(req.params);
+  // console.log(req.params);
+};
+const getComment = (req: Request, res: Response, next: NextFunction) => {
+  res.send(`Hello Comments! your comment id is ${req.params.commentid}`);
+ //asd
 };
 const postComments = (req: Request, res: Response, next: NextFunction) => {
   res.send("post comments!");
@@ -31,7 +35,7 @@ const postCommentsNext = (req: Request, res: Response) => {
 app.get("/", getRoot, getRootNext);
 app.get("/comments", getComments, getCommentsNext);
 app.post("/comments", postComments, postCommentsNext);
-app.get("/comments/:id", getComments, getCommentsNext);
+app.get("/comments/:commentid", getComment);
 
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
