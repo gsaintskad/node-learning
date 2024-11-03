@@ -1,16 +1,13 @@
-import express, { NextFunction, Request, Response } from "express";
+import express from "express";
 import dotenv from "dotenv";
-const commentsRouter = require("./controllers/comments.ts");
-const usersRouter = require("./controllers/users.ts");
-const rootRouter = require("./controllers/root.ts");
+
+const mainRouter=require("./controllers/mainRouter.ts");
+
 dotenv.config();
 
 const app = express();
 
-
-app.use("/", rootRouter);
-app.use("/comments", commentsRouter);
-app.use("/users", usersRouter);
+app.use('',mainRouter);
 
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
