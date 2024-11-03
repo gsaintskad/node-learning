@@ -1,4 +1,4 @@
-import express, {NextFunction, Request, Response} from "express";
+import express, { NextFunction, Request, Response } from "express";
 
 const getComments = (req: Request, res: Response, next: NextFunction) => {
   res.send("Hello Comments!");
@@ -21,25 +21,29 @@ const postCommentsNext = (req: Request, res: Response) => {
   console.log("This is the post comments next middleware");
 };
 
-const deleteSingleComment = (req: Request, res: Response, next: NextFunction) => {
+const deleteSingleComment = (
+  req: Request,
+  res: Response,
+  next: NextFunction,
+) => {
   res.send(`Deleting a single comment by id ${req.params.commentId}`);
-}
+};
 const deleteComments = (req: Request, res: Response, next: NextFunction) => {
   res.send(`Deleting all comments`);
   next();
-}
+};
 const deleteCommentsNext = (req: Request, res: Response) => {
-  console.log("This is the delete comments next middleware" +
-    "\nall comments have been deleted");
-}
+  console.log(
+    "This is the delete comments next middleware" +
+      "\nall comments have been deleted",
+  );
+};
 
-
-const router= express.Router();
-router.get("", getComments,getCommentsNext);
+const router = express.Router();
+router.get("", getComments, getCommentsNext);
 router.get("/:commentid", getComment);
-router.post("", postComments,postCommentsNext);
+router.post("", postComments, postCommentsNext);
 router.delete("/:commentId", deleteSingleComment);
-router.delete("",deleteComments, deleteCommentsNext);
-
+router.delete("", deleteComments, deleteCommentsNext);
 
 module.exports = router;

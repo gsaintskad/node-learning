@@ -4,7 +4,7 @@ const commentsRouter = require("./comments.ts");
 const usersRouter = require("./users.ts");
 const rootRouter = require("./root.ts");
 
-const router=express.Router();
+const router = express.Router();
 
 router.use("/", rootRouter);
 router.use("/comments", commentsRouter);

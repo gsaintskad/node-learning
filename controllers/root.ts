@@ -1,4 +1,4 @@
-import express, {NextFunction, Request, Response} from "express";
+import express, { NextFunction, Request, Response } from "express";
 
 const getRoot = (req: Request, res: Response, next: NextFunction) => {
   res.send("Hello World!");
@@ -9,6 +9,6 @@ const getRootNext = (req: Request, res: Response) => {
 };
 
 const router = express.Router();
-router.get("", getRoot,getRootNext);
+router.get("", getRoot, getRootNext);
 
 module.exports = router;
